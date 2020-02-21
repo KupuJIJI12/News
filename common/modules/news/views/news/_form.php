@@ -18,17 +18,20 @@ use common\components\widgets\Redactor;
 
     <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'time')->widget(DateTimePicker::className(),[
-    'name' => 'dp_1',
-    'type' => DateTimePicker::TYPE_INPUT,
-    'options'=> ['placeholder'=>'Ввод даты/времени...'],
-    'convertFormat'=> true,
-    'value' => '23-Feb-1982 10:10',
-    'pluginOptions' => [
-        'autoclose'=>true,
-        'format' => 'dd.mm.yyyy hh:ii'
-    ]
-]); ?>
+    <?php
+//      $form->field($model, 'time')->widget(DateTimePicker::className(),[
+//     'name' => 'dp_1',
+//     'type' => DateTimePicker::TYPE_INPUT,
+//     'options'=> ['placeholder'=>'Ввод даты/времени...'],
+//     'convertFormat'=> true,
+//     // 'value' => '23-Feb-1982 10:10',
+//     'pluginOptions' => [
+//         'autoclose'=>true,
+//         'format' => 'd.m.Y hh:ii'
+//     ]
+// ]); 
+echo $form->field($model, 'time')->textInput();
+?>
 
     <?= $form->field($model, 'image')->fileinput() ?>
 

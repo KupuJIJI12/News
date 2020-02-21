@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use common\modules\roles\models\ACLRole;
 
+use yii\web\UploadedFile;
+use common\components\helpers\Upload;
+
 /**
  * NewsController implements the CRUD actions for news model.
  */
@@ -49,10 +52,19 @@ class NewsController extends Controller
      */
     public function actionCreate()
     {
-        $model = new news();
+        $model = new News();
+/*var_dump($model);die();
+var_dump(Yii::$arr->request)->post());die();*/
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->time = '2020-01-01';
+            if($fileInstanse=UploadedFile::getInstance($model,'image'))
+            {
+                $model->image=Upload::file($fileInstanse,'news',true);
+                if( $model->save()){
+                    return $this->redirect(['view','id'=>$model->id]);
+                }
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -70,8 +82,16 @@ class NewsController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->time = '2020-01-01';
+            if($fileInstanse=UploadedFile::getInstance($model,'image'))
+            {
+                $model->image=Upload::file($fileInstanse,'news',true);
+                if( $model->save()){
+                    return $this->redirect(['view','id'=>$model->id]);
+                }
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,
