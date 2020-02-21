@@ -1,0 +1,8 @@
+.show-img-class{
+    background-color: rgb(183, 0, 255);
+    color: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 50px;
+    
+}
