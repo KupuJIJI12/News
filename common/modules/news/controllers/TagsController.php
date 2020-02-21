@@ -107,4 +107,10 @@ class TagsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionCreatetags($name)
+    {
+    $model = new Tags;
+    $model->title = $name;
+    return $model->save();
+    }
 }

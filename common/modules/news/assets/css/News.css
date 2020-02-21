@@ -1,8 +1,12 @@
 .show-img-class{
-    background-color: rgb(183, 0, 255);
-    color: black;
-    border: 1px solid black;
-    box-sizing: border-box;
-    border-radius: 50px;
-    
-}
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        padding: .8em 1em calc(.8em + 3px);
+        background: rgb(64,199,129);
+        transition: 0.2s;
+      } 
+      .show-img-class:hover { background: rgb(53, 167, 110); }
+      
+       
+      
